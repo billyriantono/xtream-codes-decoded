@@ -199,7 +199,7 @@ if (!empty(ipTV_lib::$request['username']) && !empty(ipTV_lib::$request['passwor
                 else if (($result['enabled'] == 0)) {
                     $output['user_info']['status'] = 'Disabled';
                 }
-                if (is_null($result['exp_date']) or $result['exp_date'] > time()) {
+                if ($result['exp_date'] > time()) {
                     $output['user_info']['status'] = 'Expired';
                 } else {
                     $output['user_info']['status'] = 'Banned';
