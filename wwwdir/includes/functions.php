@@ -266,9 +266,7 @@ function GenerateList($user_id, $device_key, $output_key = 'ts', $force_download
     }
     $output_ext = $ipTV_db->get_col();
     $user_info = ipTV_streaming::GetUserInfo($user_id, null, null, true, true, false);
-    if (empty($user_info)) {
-        return false;
-    }
+   
     if (!empty($user_info['exp_date']) && time() >= $user_info['exp_date']) {
         return false;
     }
