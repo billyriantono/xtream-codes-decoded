@@ -3,7 +3,7 @@
 class ipTV_stream
 {
     public static $ipTV_db;
-    static function ($sources)
+    static function RemoveCacheFile($sources)
     {
         if (empty($sources)) {
             return;
@@ -318,7 +318,7 @@ class ipTV_stream
 
                 $set = $bb1b9dfc97454460e165348212675779 <= RESTART_TAKE_CACHE ? true : false;
                 if (!$set) {
-                    self::($sources);
+                    self::RemoveCacheFile($sources);
                 }
                 foreach ($sources as $source) {
                     $stream_source = self::ParseStreamURL($source);
