@@ -75,6 +75,7 @@ ipTV_streaming::$ipTV_db =& $ipTV_db;
 ipTV_stream::$ipTV_db =& $ipTV_db;
 ipTV_lib::init();
 
+include IPTV_INCLUDES_PATH . 'geo/InvalidDatabaseException.php';
 include IPTV_INCLUDES_PATH . 'geo/Reader.php';
 include IPTV_INCLUDES_PATH . 'geo/Decoder.php';
 include IPTV_INCLUDES_PATH . 'geo/Util.php';
