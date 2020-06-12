@@ -266,7 +266,9 @@ function GenerateList($user_id, $device_key, $output_key = 'ts', $force_download
     }
     $output_ext = $ipTV_db->get_col();
     $user_info = ipTV_streaming::GetUserInfo($user_id, null, null, true, true, false);
-   
+    if (empty($user_info)) {
+        return false;
+    }
     if (!empty($user_info['exp_date']) && time() >= $user_info['exp_date']) {
         return false;
     }
@@ -387,7 +389,7 @@ function GenerateList($user_id, $device_key, $output_key = 'ts', $force_download
                                 $icon = !empty($movie_propeties['movie_image']) ? $movie_propeties['movie_image'] : $channel['stream_icon'];
                                 $esr_id = $channel['live'] == 1 ? 1 : 4097;
                                 $sid = !empty($channel['custom_sid']) ? $channel['custom_sid'] : ':0:1:0:0:0:0:0:0:0:';
-                                $data .= str_replace(array($url_pattern, '{ESR_ID}', '{SID}', '{chANNEL_NAME}', '{chANNEL_ID}', '{CATEGORY}', '{chANNEL_ICON}'), array(str_replace($devicesArray, array_map('urlencode', $devicesArray), $url), $esr_id, $sid, $channel['stream_display_name'], $channel['channel_id'], $channel['category_name'], $icon), $device_info['device_conf']) . '';
+                                $data .= str_replace(array($url_pattern, '{ESR_ID}', '{SID}', '{CHANNEL_NAME}', '{CHANNEL_ID}', '{CATEGORY}', '{CHANNEL_ICON}'), array(str_replace($devicesArray, array_map('urlencode', $devicesArray), $url), $esr_id, $sid, $channel['stream_display_name'], $channel['channel_id'], $channel['category_name'], $icon), $device_info['device_conf']) . '';
                             }
                         }
                     }
