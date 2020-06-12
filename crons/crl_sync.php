@@ -1,5 +1,10 @@
 <?php
 
+if (!@$argc) {
+    die(0);
+}
+require str_replace('\\', '/', dirname($argv[0])) . '/../wwwdir/init.php';
+
 function userActivityQueryData($connections, &$query)
 {
     if (file_exists($connections)) {
